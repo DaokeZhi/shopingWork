@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cloudconsole.dao.mybatis.auditlog.dao.PlatformLogDao">
+	<!--<resultMap id="BaseResultMap" type="com.cloudconsole.model.PlatformLog" >-->
+    	<!--<result column="ID" property="id" jdbcType="CHAR" />-->
+    	<!--<result column="USERNAME" property="userName" jdbcType="VARCHAR" />-->
+    	<!--<result column="USERROLE" property="userRole" jdbcType="VARCHAR" />-->
+    	<!--<result column="OPTIME" property="opTime" jdbcType="TIMESTAMP" />-->
+    	<!--<result column="OPOBJECT" property="opObject" jdbcType="VARCHAR" />-->
+    	<!--<result column="OPOBJECTTYPE" property="opObjectType" jdbcType="VARCHAR" />-->
+    	<!--<result column="OP" property="op" jdbcType="VARCHAR" />-->
+    	<!--<result column="RESULT" property="result" jdbcType="VARCHAR" />-->
+    	<!--<result column="IP" property="IP" jdbcType="VARCHAR" />-->
+    	<!--<result column="LOGINTIME" property="loginTime" jdbcType="TIMESTAMP" />-->
+    	<!--<result column="REMARKS" property="remarks" jdbcType="VARCHAR" />-->
+  	<!--</resultMap>-->
+  	<!-- -->
+  	<!--<sql id="Base_Column_List">-->
+		<!--ID, USERNAME, USERROLE, OPTIME, OPOBJECT, OPOBJECTTYPE, OP, RESULT, IP, LOGINTIME, REMARKS-->
+	<!--</sql>-->
+	<!-- -->
+	<!--<insert id="insertPlatformLog" parameterType="com.cloudconsole.model.PlatformLog" useGeneratedKeys="true" keyProperty="id">-->
+    <!--insert into userevent (USERNAME, USERROLE, OPTIME, OPOBJECT, OPOBJECTTYPE, OP, RESULT, IP, LOGINTIME, REMARKS)-->
+    <!--values (#{userName,jdbcType=VARCHAR}, #{userRole,jdbcType=VARCHAR}, #{opTime,jdbcType=TIMESTAMP},-->
+    <!--#{opObject,jdbcType=VARCHAR},#{opObjectType,jdbcType=VARCHAR},#{op,jdbcType=VARCHAR},-->
+    <!--#{result,jdbcType=VARCHAR},#{IP,jdbcType=VARCHAR},#{loginTime,jdbcType=TIMESTAMP},#{remarks,jdbcType=VARCHAR})-->
+  	<!--</insert>-->
+  	<!-- -->
+  	<!--<select id="selectPlatformLogWithCondition" resultMap="BaseResultMap" parameterType="map">-->
+  		<!--select -->
+  		<!--<include refid="Base_Column_List" /> -->
+  		<!--from userevent where 1=1 -->
+  		<!--<if test="queryTimeBegin!=null and queryTimeBegin!=''">-->
+  		<!--<![CDATA[-->
+    		<!--AND DATE_FORMAT(opTime, '%Y-%m-%d %H:%i') >=  DATE_FORMAT(#{queryTimeBegin}, '%Y-%m-%d %H:%i')-->
+    	<!--]]>-->
+		<!--</if>-->
+		<!--<if test="queryTimeEnd!=null and queryTimeEnd!=''">-->
+		<!--<![CDATA[-->
+    		<!--AND DATE_FORMAT(opTime, '%Y-%m-%d %H:%i') <= DATE_FORMAT(#{queryTimeEnd}, '%Y-%m-%d %H:%i') -->
+    	<!--]]>-->
+		<!--</if>-->
+		<!--<if test="userName!=null and userName!=''">-->
+			<!--AND userName = #{userName} -->
+		<!--</if>-->
+		<!--<if test="userRole!=null and userRole.size()!=0">-->
+			<!--AND userRole IN -->
+			<!--<foreach item="item" index="index" collection="userRole" open="(" separator="," close=")">-->
+        		<!--#{item}-->
+    		<!--</foreach>-->
+		<!--</if>-->
+		<!--<if test="opObject!=null and opObject!=''">-->
+			<!--AND opObject like "%"#{opObject}"%" -->
+		<!--</if>-->
+		<!--<if test="opObjectType!=null">-->
+			<!--AND opObjectType IN -->
+			<!--<foreach item="item" index="index" collection="opObjectType" open="(" separator="," close=")">-->
+        		<!--#{item}-->
+    		<!--</foreach>-->
+		<!--</if>-->
+		<!--<if test="op!=null and op!=''">-->
+			<!--AND op = #{op}-->
+		<!--</if>-->
+		<!--ORDER BY opTime DESC LIMIT #{lowerIndex},#{pageSize}-->
+  	<!--</select>-->
+  	<!-- -->
+  	<!--<select id="selectLogCountWithCondition" resultType="int" parameterType="map">-->
+  		<!--select count(1) -->
+  		<!--<include refid="Base_Column_List" /> -->
+  		<!--from userevent where 1=1 -->
+  		<!--<if test="queryTimeBegin!=null and queryTimeBegin!=''">-->
+  		<!--<![CDATA[-->
+    		<!--AND DATE_FORMAT(opTime, '%Y-%m-%d %H:%i') >=  DATE_FORMAT(#{queryTimeBegin}, '%Y-%m-%d %H:%i')-->
+    	<!--]]>-->
+		<!--</if>-->
+		<!--<if test="queryTimeEnd!=null and queryTimeEnd!=''">-->
+		<!--<![CDATA[-->
+    		<!--AND DATE_FORMAT(opTime, '%Y-%m-%d %H:%i') <= DATE_FORMAT(#{queryTimeEnd}, '%Y-%m-%d %H:%i') -->
+    	<!--]]>-->
+		<!--</if>-->
+		<!--<if test="userName!=null and userName!=''">-->
+			<!--AND userName = #{userName} -->
+		<!--</if>-->
+		<!--<if test="userRole!=null and userRole.size()!=0">-->
+			<!--AND userRole IN -->
+			<!--<foreach item="item" index="index" collection="userRole" open="(" separator="," close=")">-->
+        		<!--#{item}-->
+    		<!--</foreach>-->
+		<!--</if>-->
+		<!--<if test="opObject!=null and opObject!=''">-->
+			<!--AND opObject like "%"#{opObject}"%" -->
+		<!--</if>-->
+		<!--<if test="opObjectType!=null">-->
+			<!--AND opObjectType IN -->
+			<!--<foreach item="item" index="index" collection="opObjectType" open="(" separator="," close=")">-->
+        		<!--#{item}-->
+    		<!--</foreach>-->
+		<!--</if>-->
+		<!--<if test="op!=null and op!=''">-->
+			<!--AND op = #{op}-->
+		<!--</if>-->
+  	<!--</select>-->
+</mapper>
